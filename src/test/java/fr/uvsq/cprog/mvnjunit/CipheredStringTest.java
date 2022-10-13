@@ -16,18 +16,7 @@ public class CipheredStringTest {
 
     @BeforeEach
     public void setup() {
-        cs = new CipheredString(MESSAGE, SHIFT);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-      "HAL, 1, 'HAL, 1 ->'",
-      "'', 1, ', 1 ->'",
-      "null, 1, 'null, 1 ->'"
-    })
-    public void shouldCreateACipheredString(String message, int shift, String expected) {
-        CipheredString cs = new CipheredString(message, shift);
-        assertEquals(expected, cs.toString());
+        cs = CipheredString.fromClear(MESSAGE, SHIFT);
     }
 
     @Test

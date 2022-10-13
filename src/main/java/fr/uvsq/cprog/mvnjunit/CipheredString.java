@@ -12,7 +12,7 @@ public class CipheredString {
   private final String clear;
   private final int shift;
 
-  public CipheredString(String message, int shift) {
+  private CipheredString(String message, int shift) {
     this.clear = message;
     this.shift = shift;
   }
@@ -22,12 +22,7 @@ public class CipheredString {
   }
 
   public static CipheredString fromCiphered(String message, int shift) {
-    String clearMessage = message.chars()
-      .mapToObj(c -> shiftChar((char)c, -shift))
-      .collect(Collector.of(StringBuilder::new,
-        StringBuilder::append,
-        StringBuilder::append,
-        StringBuilder::toString));
+    String clearMessage = shiftString(message, -shift);
     return new CipheredString(clearMessage, shift);
   }
 
@@ -41,12 +36,7 @@ public class CipheredString {
   }
 
   public String cipher() {
-    return clear.chars()
-      .mapToObj(c -> shiftChar((char)c, shift))
-      .collect(Collector.of(StringBuilder::new,
-        StringBuilder::append,
-        StringBuilder::append,
-        StringBuilder::toString));
+    return shiftString(clear, shift);
   }
 
   /**
@@ -60,5 +50,21 @@ public class CipheredString {
    */
   private static char shiftChar(char c, int shift) {
     return (c < 'A' || c > 'Z')? c : (char)(((c - 'A' + shift) % 26) + 'A');
+  }
+
+  /**
+   * Décale les caractères d'une chaîne
+   *
+   * @param s la chaîne
+   * @param shift le décalage à appliquer
+   * @return la chaîne décalée
+   */
+  private static String shiftString(String s, int shift) {
+    return s.chars()
+      .mapToObj(c -> shiftChar((char)c, shift))
+      .collect(Collector.of(StringBuilder::new,
+        StringBuilder::append,
+        StringBuilder::append,
+        StringBuilder::toString));
   }
 }

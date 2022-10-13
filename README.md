@@ -84,7 +84,7 @@ Il pourra éventuellement être nécessaire de [configurer le proxy](http://mave
     > * Initialisation avec une chaîne `""` et un décalage (✅)
     > * retourner la chaîne en clair (✅)
     > * retourner la chaîne chiffrée (✅)
-    > * Initialisation à partir d'une chaîne cryptée et d'un décalage (plus les cas `null` et `""`)
+    > * Initialisation à partir d'une chaîne cryptée et d'un décalage (plus les cas `null` et `""`) (✅)
 1.  Pour chaque cas de test,
     1. écrivez le test JUnit correspondant dans la classe de test,
     1. vérifiez qu’il échoue,
