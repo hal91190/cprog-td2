@@ -48,7 +48,7 @@ Il pourra éventuellement être nécessaire de [configurer le proxy](http://mave
     1. À quoi sert la propriété `project.build.sourceEncoding` ?
         > à préciser l'encodage des fichiers sources (cf. [Specifying a character encoding scheme](https://maven.apache.org/plugins/maven-resources-plugin/examples/encoding.html))
     1. Quelles versions des sources et de la JVM sont utilisés ?
-        > Les sources sont en version 7, la JVM cible également (cf. [Setting the `-source` and `-target` of the Java Compiler](https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html)).
+        > Les sources sont en version 7, la JVM cible également (cf. [Setting the `-source` and `-target` of the Java Compiler](https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html) et [Setting the --release of the Java Compiler](https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-release.html)).
         ```
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -79,7 +79,12 @@ Il pourra éventuellement être nécessaire de [configurer le proxy](http://mave
 1.  Ajoutez une classe `ChaineCryptee` et une classe `ChaineCrypteeTest` dans les répertoires et packages appropriés.
     Supprimez les classes d'exemple `App` et `AppTest`.
 1.  Énumérez une liste de cas de tests à réaliser en n'oubliant pas les cas d'erreur.
-    > RÉPONDRE ICI
+    > * Initialisation avec une chaîne et un décalage
+    > * Initialisation avec une chaîne `null` et un décalage
+    > * Initialisation avec une chaîne `""` et un décalage
+    > * retourner la chaîne en clair,
+    > * retourner la chaîne chiffrée
+    > * Initialisation à partir d'une chaîne cryptée et d'un décalage (plus les cas `null` et `""`)
 1.  Pour chaque cas de test,
     1. écrivez le test JUnit correspondant dans la classe de test,
     1. vérifiez qu’il échoue,
