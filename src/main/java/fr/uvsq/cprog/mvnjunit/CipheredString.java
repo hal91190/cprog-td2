@@ -67,4 +67,9 @@ public class CipheredString {
         StringBuilder::append,
         StringBuilder::toString));
   }
+
+  public static void main(String[] args) {
+    CipheredString cs = CipheredString.fromClear("HAL", 1);
+    System.out.printf("%s (%d) -> %s%n", cs.decipher(), 1, cs.cipher());
+  }
 }
