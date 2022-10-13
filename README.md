@@ -27,31 +27,55 @@ Il pourra éventuellement être nécessaire de [configurer le proxy](http://mave
 À chaque étape, validez vos modifications avec `git` et si nécessaire, exécutez le cycle maven adapté pour vérifier vos manipulations.
 
 1.  Quelles conventions utilise Maven pour l’arborescence des répertoires ?
-    > RÉPONDRE ICI
+    > Le détail de l'arborescence maven est disponible en ligne ([Introduction to the Standard Directory Layout](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)).
+    > 
+    > En particulier
+    > * src/ contient les sources du projet
+    > * src/main/java les sources en Java
+    > * src/test/java les sources des tests en Java
+    > * target/ ce qui est produit par maven
 1.  Examinez le projet Maven ainsi que le fichier de description et répondez aux questions suivantes :
     1.  Dans quel répertoire se trouvent les fichiers sources du projet ? Les sources des tests ?
-        > RÉPONDRE ICI
+        > * src/main/java les sources en Java
+        > * src/test/java les sources des tests en Java
     1. Quelles sont les coordonnées du projet ?
-        > RÉPONDRE ICI
+        > cf. [Guide to naming conventions on groupId, artifactId, and version](https://maven.apache.org/guides/mini/guide-naming-conventions.html) 
+        ```
+        <groupId>fr.uvsq.cprog</groupId>
+        <artifactId>mvnjunit</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        ```
     1. À quoi sert la propriété `project.build.sourceEncoding` ?
-        > RÉPONDRE ICI
+        > à préciser l'encodage des fichiers sources (cf. [Specifying a character encoding scheme](https://maven.apache.org/plugins/maven-resources-plugin/examples/encoding.html))
     1. Quelles versions des sources et de la JVM sont utilisés ?
-        > RÉPONDRE ICI
+        > Les sources sont en version 7, la JVM cible également (cf. [Setting the `-source` and `-target` of the Java Compiler](https://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html)).
+        ```
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        ```
     1. Quelle version de JUnit est configurée ? À quoi sert la balise `scope` ?
-        > RÉPONDRE ICI
+        > JUnit 4.11, `scope` précise dans quel contexte utiliser cette dépendance (pour les tests ici) (cf. [Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html))
+        ```
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.11</version>
+          <scope>test</scope>
+        </dependency>
+        ```
     1. À quoi sert la section `pluginManagement` ?
-        > RÉPONDRE ICI
+        > à fixer la version des différents plugins utilisés (cf. [Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html))
 1.  Modifiez la configuration du projet de la façon suivante :
     1.  fixez la version des sources et des .class pour utiliser la version 17 de Java
     1.  utilisez la dernière version stable de JUnit 4 (cf. [MVNRepository](https://mvnrepository.com/))
 1.  Ajoutez un fichier `.gitignore` adapté aux projets Maven (cf. [A collection of .gitignore templates](https://github.com/github/gitignore)) et ajoutez-y les fichiers et répertoires de votre IDE.
 1.  Quelle commande Maven permet de :
     1.  créer un `jar` du projet ?
-        > RÉPONDRE ICI
+        > mvn package
     1. lancer les tests ?
-        > RÉPONDRE ICI
+        > mvn test
     1. supprimer tous les fichiers issus de la compilation ?
-        > RÉPONDRE ICI
+        > mvn clean
 1.  Ajoutez une classe `ChaineCryptee` et une classe `ChaineCrypteeTest` dans les répertoires et packages appropriés.
     Supprimez les classes d'exemple `App` et `AppTest`.
 1.  Énumérez une liste de cas de tests à réaliser en n'oubliant pas les cas d'erreur.
