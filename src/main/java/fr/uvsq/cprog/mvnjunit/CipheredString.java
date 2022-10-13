@@ -49,11 +49,11 @@ public class CipheredString {
    * @return le caractère décalé
    */
   private static char shiftChar(char c, int shift) {
-    return (c < 'A' || c > 'Z')? c : (char)(((c - 'A' + shift) % 26) + 'A');
+    return (c < 'A' || c > 'Z') ? c : (char) (((c - 'A' + shift) % 26) + 'A');
   }
 
   /**
-   * Décale les caractères d'une chaîne
+   * Décale les caractères d'une chaîne.
    *
    * @param s la chaîne
    * @param shift le décalage à appliquer
@@ -61,7 +61,7 @@ public class CipheredString {
    */
   private static String shiftString(String s, int shift) {
     return s.chars()
-      .mapToObj(c -> shiftChar((char)c, shift))
+      .mapToObj(c -> shiftChar((char) c, shift))
       .collect(Collector.of(StringBuilder::new,
         StringBuilder::append,
         StringBuilder::append,
