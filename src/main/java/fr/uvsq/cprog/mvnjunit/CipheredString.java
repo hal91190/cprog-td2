@@ -7,7 +7,16 @@ package fr.uvsq.cprog.mvnjunit;
  * @version 2022
  */
 public class CipheredString {
-  public CipheredString(String message, int shift) {
+  private final String clear;
+  private final int shift;
 
+  public CipheredString(String message, int shift) {
+    this.clear = message;
+    this.shift = shift;
+  }
+
+  @Override
+  public String toString() {
+    return clear + ", " + shift + " ->";
   }
 }
