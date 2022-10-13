@@ -9,11 +9,11 @@ import java.util.stream.Collector;
  * @version 2022
  */
 public class CipheredString {
-  private final String clear;
+  private final String ciphered;
   private final int shift;
 
   private CipheredString(String message, int shift) {
-    this.clear = message;
+    this.ciphered = shiftString(message, shift);
     this.shift = shift;
   }
 
@@ -28,15 +28,15 @@ public class CipheredString {
 
   @Override
   public String toString() {
-    return clear + ", " + shift + " ->";
+    return shiftString(ciphered, -shift) + ", " + shift + " ->";
   }
 
   public String decipher() {
-    return clear;
+    return shiftString(ciphered, -shift);
   }
 
   public String cipher() {
-    return shiftString(clear, shift);
+    return ciphered;
   }
 
   /**
