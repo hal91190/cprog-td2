@@ -1,5 +1,8 @@
 package fr.uvsq.cprog.mvnjunit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.stream.Collector;
 
 /**
@@ -69,7 +72,9 @@ public class CipheredString {
   }
 
   public static void main(String[] args) {
+    Logger logger = LoggerFactory.getLogger(CipheredString.class);
+
     CipheredString cs = CipheredString.fromClear("HAL", 1);
-    System.out.printf("%s (%d) -> %s%n", cs.decipher(), 1, cs.cipher());
+    logger.info("{} ({}) -> {}", cs.decipher(), 1, cs.cipher());
   }
 }
