@@ -39,4 +39,26 @@ public class CipheredStringTest {
     public void shouldReturnTheCipheredString() {
         assertEquals(CIPHERED_MESSAGE, cs.cipher());
     }
+
+    @ParameterizedTest
+    @CsvSource({
+      "HAL, 1, 'HAL, 1 ->'",
+      "'', 1, ', 1 ->'",
+      "null, 1, 'null, 1 ->'"
+    })
+    public void shouldCreateACipheredStringFromClearMessage(String message, int shift, String expected) {
+        CipheredString cs = CipheredString.fromClear(message, shift);
+        assertEquals(expected, cs.toString());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+      "IBM, 1, 'HAL, 1 ->'",
+      "'', 1, ', 1 ->'",
+      "null, 1, 'null, 1 ->'"
+    })
+    public void shouldCreateACipheredStringFromCipheredMessage(String message, int shift, String expected) {
+        CipheredString cs = CipheredString.fromCiphered(message, shift);
+        assertEquals(expected, cs.toString());
+    }
 }

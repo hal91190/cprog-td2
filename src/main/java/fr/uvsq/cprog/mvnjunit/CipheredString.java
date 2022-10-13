@@ -17,6 +17,20 @@ public class CipheredString {
     this.shift = shift;
   }
 
+  public static CipheredString fromClear(String message, int shift) {
+    return new CipheredString(message, shift);
+  }
+
+  public static CipheredString fromCiphered(String message, int shift) {
+    String clearMessage = message.chars()
+      .mapToObj(c -> shiftChar((char)c, -shift))
+      .collect(Collector.of(StringBuilder::new,
+        StringBuilder::append,
+        StringBuilder::append,
+        StringBuilder::toString));
+    return new CipheredString(clearMessage, shift);
+  }
+
   @Override
   public String toString() {
     return clear + ", " + shift + " ->";
